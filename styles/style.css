@@ -69,8 +69,54 @@ main{
         letter-spacing: 5px;
     }
 
-    img {
-        width: 6rem;
-        aspect-ratio: 1/1;
+    div {
+        position: relative;
+
+        img {
+            width: 6rem;
+            aspect-ratio: 1/1;
+        }
+
+        .crosshair{
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            animation: 2s linear infinite rotate;
+        }
+    }
+}
+
+.selected {
+    animation: 1.5s infinite highlight;
+
+    div .crosshair {
+        display: inline-block;
+    }
+}
+
+@keyframes highlight{
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(.8);
+    }
+    50% {
+        transform: translate(-50%, -50%) rotate(180deg) scale(.6);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(.8);
     }
 }

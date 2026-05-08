@@ -4,7 +4,9 @@ import { domElements } from "./domElements.js";
 function generateAsteroidElement(name: string): HTMLElement{
     let wrapper = document.createElement("div");
     let span = document.createElement("span");
+    let innerWrapper = document.createElement("div");
     let img = document.createElement("img");
+    let crosshair = document.createElement("img");
     
     wrapper.classList.add("asteroid");
 
@@ -12,9 +14,16 @@ function generateAsteroidElement(name: string): HTMLElement{
 
     img.src = "./assets/images/compressed.png";
     img.alt = "Asteroid image";
+    crosshair.src = "./assets/images/crosshair.png";
+    crosshair.alt = "Asteroid image";
+
+    crosshair.classList.add("crosshair");
+
+    innerWrapper.append(img);
+    innerWrapper.append(crosshair);
     
     wrapper.append(span);
-    wrapper.append(img);
+    wrapper.append(innerWrapper);
 
     let animation = generateAnimation(wrapper);
 

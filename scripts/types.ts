@@ -15,6 +15,7 @@ interface GameHandler {
     asteroidGenerator: () => void,
     incrementScore: () => void,
     decrementLives: () => void,
+    showGameOverBanner: () => void,
 };
 
 export type {AsteroidHandler, GameHandler};

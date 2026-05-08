@@ -41,6 +41,8 @@ const asteroidHandler: AsteroidHandler = {
 
         if(!asteroid) return;
 
+        asteroid.classList.add("selected");
+
         if(this.selectedAsteroid === ""){
             gameHandler.incrementScore();
             this.asteroids.delete(this.asteroidNames[this.selectedAsteroidIndex] ?? "");

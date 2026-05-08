@@ -28,6 +28,9 @@ const gameHandler: GameHandler = {
         if(this.lives === ""){
             this.gameState = "OVER";
         }
+    },
+    showGameOverBanner() {
+        
     }
 }
 

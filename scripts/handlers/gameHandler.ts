@@ -3,7 +3,7 @@ import { domElements } from "../views/domElements.js";
 import { asteroidHandler } from "./asteroidHandler.js";
 
 const gameHandler: GameHandler = {
-    gameState: "PLAY",
+    gameState: "NOT_STARTED",
     gameScore: 0,
     lives: "❤️❤️❤️",
     asteroidGenerator(){
@@ -27,10 +27,16 @@ const gameHandler: GameHandler = {
         domElements.lifeElement.innerText = this.lives;
         if(this.lives === ""){
             this.gameState = "OVER";
+            this.showGameOverBanner();
+            asteroidHandler.clearAllAsteroids();
         }
     },
     showGameOverBanner() {
-        
+        domElements.gameEndScreen.style.display = "flex";
+        let scoreDisplayElement = domElements.gameEndScreen.querySelector(".score") as HTMLElement;
+        if(scoreDisplayElement){
+            scoreDisplayElement.innerText = `You destroyed ${this.gameScore} ${this.gameScore < 2 ? "asteroid" : "asteroids"}`
+        }
     }
 }
 

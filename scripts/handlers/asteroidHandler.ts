@@ -68,6 +68,12 @@ const asteroidHandler: AsteroidHandler = {
         this.asteroids.get(name)?.remove();
         console.log(this.asteroids.delete(name));
         this.asteroidNames = this.asteroidNames.filter(asteroid => asteroid !== name);
+    },
+    clearAllAsteroids(){
+        Array.from(this.asteroids).forEach(asteroid => {
+            removeAnimation(asteroid[1]);
+            asteroid[1].remove();
+        });
     }
 };
 

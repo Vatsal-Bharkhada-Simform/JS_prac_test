@@ -4,6 +4,8 @@ const domElements = {
     asteroidArea: document.querySelector(".asteroid-area") as HTMLElement,
     dangerZone: document.querySelector(".danger-zone") as HTMLElement,
     rocket: document.querySelector(".rocket") as HTMLElement,
+    startScreen: document.querySelector(".start-screen") as HTMLElement,
+    gameEndScreen: document.querySelector(".game-over-screen") as HTMLElement,
 };
 
 export { domElements }; 

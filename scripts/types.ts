@@ -6,10 +6,11 @@ interface AsteroidHandler {
     generateAsteroid: () => void,
     handleInput: (input: string) => void,
     handleAsteroidImpact: (name: string) => void,
+    clearAllAsteroids: () => void,
 };
 
 interface GameHandler {
-    gameState: "PLAY" | "PAUSE" | "OVER",
+    gameState: "NOT_STARTED" | "PLAY" | "PAUSE" | "OVER",
     gameScore: number,
     lives: string,
     asteroidGenerator: () => void,

@@ -1,15 +1,27 @@
 import { asteroidHandler } from "../handlers/asteroidHandler.js";
+import { gameHandler } from "../handlers/gameHandler.js";
+import { domElements } from "../views/domElements.js";
 
 function addInputEvents(){
     document.addEventListener("keyup", (e: KeyboardEvent) => {
-        let input = e.key;
-        let isAlphabet = /[a-zA-Z]/.test(input);
-
-        if(input.length > 1 || !isAlphabet) return;
-        
-        input = input.toUpperCase();
-
-        asteroidHandler.handleInput(input);
+        if(gameHandler.gameState === "NOT_STARTED"){
+            gameHandler.gameState = "PLAY";
+            domElements.startScreen.style.display = "none";
+            gameHandler.asteroidGenerator();
+        } else if (gameHandler.gameState === "OVER") {
+            gameHandler.gameState = "PLAY";
+            domElements.gameEndScreen.style.display = "none";
+            gameHandler.asteroidGenerator();
+        } else {
+            let input = e.key;
+            let isAlphabet = /[a-zA-Z]/.test(input);
+            
+            if(input.length > 1 || !isAlphabet) return;
+            
+            input = input.toUpperCase();
+            
+            asteroidHandler.handleInput(input);
+        }
     });
 }
 

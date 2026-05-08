@@ -1,3 +1,4 @@
+import { asteroidHandler } from "../handlers/asteroidHandler.js";
 import { domElements } from "./domElements.js";
 
 function generateAsteroidElement(name: string): HTMLElement{
@@ -15,12 +16,17 @@ function generateAsteroidElement(name: string): HTMLElement{
     wrapper.append(span);
     wrapper.append(img);
 
-    generateAnimation(wrapper);
+    let animation = generateAnimation(wrapper);
+
+    animation.onfinish = () => {   
+        asteroidHandler.handleAsteroidImpact(name);
+        wrapper.remove();
+    }
     
     return wrapper;
 }
 
-function generateAnimation(wrapper: HTMLElement): void{
+function generateAnimation(wrapper: HTMLElement): Animation{
     let initialX = Math.floor(Math.random() * window.innerWidth);
     let initialY = -100;
     
@@ -42,7 +48,8 @@ function generateAnimation(wrapper: HTMLElement): void{
         duration: 10000
     }
 
-    wrapper.animate(keyFrames, animationTiming);
+    let animation = wrapper.animate(keyFrames, animationTiming);
+    return animation;
 }
 
 export { generateAsteroidElement };

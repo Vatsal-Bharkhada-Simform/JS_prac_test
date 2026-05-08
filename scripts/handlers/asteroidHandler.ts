@@ -49,6 +49,10 @@ const asteroidHandler: AsteroidHandler = {
         if(nameElement){
             nameElement.innerText = updatedWord;
         }
+    },
+    handleAsteroidImpact(name){
+        this.asteroids.delete(name);
+        this.asteroidNames = this.asteroidNames.filter(asteroid => asteroid === name);
     }
 };
 

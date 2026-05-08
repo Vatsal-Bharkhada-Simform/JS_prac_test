@@ -40,7 +40,7 @@ function generateAnimation(wrapper: HTMLElement): Animation{
     let initialY = -100;
     
     let finalX = domElements.rocket.offsetLeft;
-    let finalY = domElements.dangerZone.offsetTop - 20;
+    let finalY = domElements.dangerZone.offsetTop - wrapper.getBoundingClientRect().height*2;
 
     const keyFrames: Keyframe[] = [
         {

@@ -10,6 +10,7 @@ function addInputEvents(){
             gameHandler.asteroidGenerator();
         } else if (gameHandler.gameState === "OVER") {
             gameHandler.gameState = "PLAY";
+            gameHandler.lives = "❤️❤️❤️";
             domElements.gameEndScreen.style.display = "none";
             gameHandler.asteroidGenerator();
         } else if (gameHandler.gameState === "PAUSE") {

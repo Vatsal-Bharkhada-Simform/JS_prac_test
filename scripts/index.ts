@@ -1,3 +1,3 @@
-import { asteroidHandler } from "./handlers/asteroidHandler.js";
+import { gameHandler } from "./handlers/gameHandler.js";
 
-asteroidHandler.generateAsteroid();
+gameHandler.asteroidGenerator();

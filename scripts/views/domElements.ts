@@ -6,6 +6,7 @@ const domElements = {
     rocket: document.querySelector(".rocket") as HTMLElement,
     startScreen: document.querySelector(".start-screen") as HTMLElement,
     gameEndScreen: document.querySelector(".game-over-screen") as HTMLElement,
+    pauseButton: document.querySelector(".pause-btn") as HTMLElement
 };
 
 export { domElements }; 

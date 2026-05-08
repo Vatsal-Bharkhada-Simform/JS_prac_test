@@ -1,6 +1,6 @@
 import { nameSet } from "../models/nameSet.js";
 import type { AsteroidHandler } from "../types.js";
-import { removeAnimation } from "../utils/removeAnimation.js";
+import { removeAnimation } from "../utils/handleAnimation.js";
 import { domElements } from "../views/domElements.js";
 import { generateAsteroidElement } from "../views/generateElement.js";
 import { gameHandler } from "./gameHandler.js";

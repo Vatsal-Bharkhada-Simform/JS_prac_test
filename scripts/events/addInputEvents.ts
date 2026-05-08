@@ -12,6 +12,9 @@ function addInputEvents(){
             gameHandler.gameState = "PLAY";
             domElements.gameEndScreen.style.display = "none";
             gameHandler.asteroidGenerator();
+        } else if (gameHandler.gameState === "PAUSE") {
+            gameHandler.gameState = "PLAY";
+            gameHandler.playGame();
         } else {
             let input = e.key;
             let isAlphabet = /[a-zA-Z]/.test(input);
@@ -23,6 +26,10 @@ function addInputEvents(){
             asteroidHandler.handleInput(input);
         }
     });
+
+    domElements.pauseButton.addEventListener("click", () => {
+        gameHandler.pauseGame();
+    })
 }
 
 export {addInputEvents};

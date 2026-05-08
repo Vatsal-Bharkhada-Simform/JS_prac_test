@@ -13,6 +13,8 @@ interface GameHandler {
     gameScore: number,
     lives: string,
     asteroidGenerator: () => void,
+    incrementScore: () => void,
+    decrementLives: () => void,
 };
 
 export type {AsteroidHandler, GameHandler};

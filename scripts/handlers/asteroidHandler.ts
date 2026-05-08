@@ -1,7 +1,9 @@
 import { nameSet } from "../models/nameSet.js";
 import type { AsteroidHandler } from "../types.js";
+import { removeAnimation } from "../utils/removeAnimation.js";
 import { domElements } from "../views/domElements.js";
 import { generateAsteroidElement } from "../views/generateElement.js";
+import { gameHandler } from "./gameHandler.js";
 
 const asteroidHandler: AsteroidHandler = {
     asteroids: new Map(),
@@ -10,6 +12,9 @@ const asteroidHandler: AsteroidHandler = {
     selectedAsteroidIndex: -1,
     generateAsteroid(): void {
         let index = Math.floor(Math.random() * nameSet.length);
+        while(this.asteroidNames.includes(nameSet[index] ?? "")){
+            index = Math.floor(Math.random() * nameSet.length);
+        }
         let selectedName = nameSet[index] || "";
 
         let asteroidElement = generateAsteroidElement(selectedName);
@@ -37,6 +42,9 @@ const asteroidHandler: AsteroidHandler = {
         if(!asteroid) return;
 
         if(this.selectedAsteroid === ""){
+            gameHandler.incrementScore();
+            this.asteroids.delete(this.asteroidNames[this.selectedAsteroidIndex] ?? "");
+            removeAnimation(asteroid);
             asteroid?.remove();
             this.asteroidNames.splice(this.selectedAsteroidIndex, 1);
             this.selectedAsteroid = "";
@@ -51,8 +59,13 @@ const asteroidHandler: AsteroidHandler = {
         }
     },
     handleAsteroidImpact(name){
-        this.asteroids.delete(name);
-        this.asteroidNames = this.asteroidNames.filter(asteroid => asteroid === name);
+        if(this.asteroids.has(name)){
+            console.log(this.asteroids.get(name));
+            gameHandler.decrementLives();
+        }
+        this.asteroids.get(name)?.remove();
+        console.log(this.asteroids.delete(name));
+        this.asteroidNames = this.asteroidNames.filter(asteroid => asteroid !== name);
     }
 };
 

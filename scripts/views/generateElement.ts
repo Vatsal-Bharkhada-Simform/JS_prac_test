@@ -18,9 +18,9 @@ function generateAsteroidElement(name: string): HTMLElement{
 
     let animation = generateAnimation(wrapper);
 
-    animation.onfinish = () => {   
+    animation.onfinish = (e) => {
+        console.log(e);   
         asteroidHandler.handleAsteroidImpact(name);
-        wrapper.remove();
     }
     
     return wrapper;

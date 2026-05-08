@@ -16,6 +16,7 @@ function addInputEvents(){
         } else if (gameHandler.gameState === "PAUSE") {
             gameHandler.gameState = "PLAY";
             gameHandler.playGame();
+            gameHandler.asteroidGenerator();
         } else {
             let input = e.key;
             let isAlphabet = /[a-zA-Z]/.test(input);

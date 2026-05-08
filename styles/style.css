@@ -11,6 +11,8 @@ body{
     height:100vh;
     overflow: hidden;
     background-color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ddd;
 }
 
 main{
@@ -46,6 +48,7 @@ main{
 }
 
 .asteroid{
+    position: fixed;
     display: flex;
     align-items: center;
 

@@ -15,7 +15,6 @@ function generateAsteroidElement(name) {
 function generateAnimation(wrapper) {
     let initialX = Math.floor(Math.random() * window.innerWidth);
     let initialY = -100;
-    console.log(initialX);
     let finalX = domElements.rocket.offsetLeft;
     let finalY = domElements.rocket.offsetTop;
     const keyFrames = [

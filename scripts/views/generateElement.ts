@@ -23,8 +23,6 @@ function generateAsteroidElement(name: string): HTMLElement{
 function generateAnimation(wrapper: HTMLElement): void{
     let initialX = Math.floor(Math.random() * window.innerWidth);
     let initialY = -100;
-
-    console.log(initialX);
     
     let finalX = domElements.rocket.offsetLeft;
     let finalY = domElements.rocket.offsetTop;

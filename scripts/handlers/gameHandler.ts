@@ -6,7 +6,6 @@ const gameHandler: GameHandler = {
     asteroidGenerator(){
         if(this.gameState === "PLAY"){
             let timer = setInterval(() => {
-                console.log("HIT");
                 if(this.gameState === "PLAY"){
                     asteroidHandler.generateAsteroid();
                 } else {

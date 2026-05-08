@@ -1,6 +1,10 @@
 interface AsteroidHandler {
     asteroids: Map<string, HTMLElement>,
+    asteroidNames: string[],
+    selectedAsteroid: string,
+    selectedAsteroidIndex: number,
     generateAsteroid: () => void,
+    handleInput: (input: string) => void,
 };
 
 interface GameHandler {

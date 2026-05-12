@@ -17,7 +17,6 @@ interface GameHandler {
     incrementScore: () => void,
     decrementLives: () => void,
     showGameOverBanner: () => void,
-    targetAsteroid: (asteroid: HTMLElement) => void,
     pauseGame: () => void,
     playGame: () => void,
 };

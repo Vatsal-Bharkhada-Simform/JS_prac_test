@@ -4,9 +4,10 @@ import { domElements } from "../views/domElements.js";
 import { asteroidHandler } from "./asteroidHandler.js";
 
 const gameHandler: GameHandler = {
-    gameState: "NOT_STARTED",
-    gameScore: 0,
-    lives: "❤️❤️❤️",
+    gameState: "NOT_STARTED",       // Game state 
+    gameScore: 0,                   // Current score 
+    lives: "❤️❤️❤️",                // Lives left, default 3
+    // Function to generate asteroid eveny 3 seconds when game state is "PLAY"
     asteroidGenerator(){
         if(this.gameState === "PLAY"){
             let timer = setInterval(() => {
@@ -18,10 +19,12 @@ const gameHandler: GameHandler = {
             }, 3000);
         }
     },
+    // Handle score increment and reflect in the proper DOM element
     incrementScore(){
         this.gameScore++;
         domElements.scoreElement.innerText = String(this.gameScore);
     },
+    // Decrement lives and reflect in the proper DOM element
     decrementLives(){
         this.lives = this.lives.slice(0,this.lives.length-2);
         console.log(this.lives);
@@ -32,6 +35,7 @@ const gameHandler: GameHandler = {
             asteroidHandler.clearAllAsteroids();
         }
     },
+    // Function to show game over banner and 
     showGameOverBanner() {
         domElements.gameEndScreen.style.display = "flex";
         let scoreDisplayElement = domElements.gameEndScreen.querySelector(".score") as HTMLElement;
@@ -39,9 +43,7 @@ const gameHandler: GameHandler = {
             scoreDisplayElement.innerText = `You destroyed ${this.gameScore} ${this.gameScore < 2 ? "asteroid" : "asteroids"}`
         }
     },
-    targetAsteroid(asteroid){
-        console.log(asteroid);
-    },
+    // Pause game by pausing all asteroid animations and showing pause screen
     pauseGame(){
         asteroidHandler.asteroids.forEach(asteroid => {
             pauseAnimation(asteroid);
@@ -51,6 +53,7 @@ const gameHandler: GameHandler = {
         domElements.startScreen.style.display = "flex";
         this.gameState = "PAUSE";
     },
+    // Continue paused animations and remove paused screen
     playGame(){
         asteroidHandler.asteroids.forEach(asteroid => {
             playAnimation(asteroid);

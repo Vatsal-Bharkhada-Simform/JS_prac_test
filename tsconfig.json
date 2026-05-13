@@ -4,6 +4,7 @@
     // File Layout
     "rootDir": "./scripts",
     "outDir": "./dist",
+    "forceConsistentCasingInFileNames": true,
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module

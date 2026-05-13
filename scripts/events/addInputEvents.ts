@@ -10,7 +10,9 @@ function addInputEvents(){
             gameHandler.asteroidGenerator();
         } else if (gameHandler.gameState === "OVER") {      // If game has ended, start new game on keypress
             gameHandler.gameState = "PLAY";
+            gameHandler.gameScore = 0;
             gameHandler.lives = "❤️❤️❤️";
+            domElements.scoreElement.innerText = "0";
             domElements.gameEndScreen.style.display = "none";
             gameHandler.asteroidGenerator();
         } else if (gameHandler.gameState === "PAUSE") {     // If game is paused, resume it on keypress

@@ -84,6 +84,10 @@ const asteroidHandler: AsteroidHandler = {
             removeAnimation(asteroid[1]);
             asteroid[1].remove();
         });
+        this.asteroids.clear();
+        this.asteroidNames.length = 0;
+        this.selectedAsteroid = "";
+        this.selectedAsteroidIndex = -1;
     }
 };
 

@@ -31,9 +31,9 @@ function generateAsteroidElement(name: string): HTMLElement{
 
     // Handle asteroid imapact if asteroid is not destroyed
     // This event will not execute for destroyed/removed asteroid elements
-    animation.onfinish = (e) => {
+    animation.onfinish = () => {
         asteroidHandler.handleAsteroidImpact(name);
-    }
+    };
     
     return wrapper;
 }

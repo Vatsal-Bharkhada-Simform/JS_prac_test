@@ -13,6 +13,7 @@ interface GameHandler {
     gameState: "NOT_STARTED" | "PLAY" | "PAUSE" | "OVER",
     gameScore: number,
     lives: string,
+    _asteroidTimer: ReturnType<typeof setInterval> | null,
     asteroidGenerator: () => void,
     incrementScore: () => void,
     decrementLives: () => void,

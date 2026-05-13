@@ -7,14 +7,17 @@ const gameHandler: GameHandler = {
     gameState: "NOT_STARTED",       // Game state 
     gameScore: 0,                   // Current score 
     lives: "❤️❤️❤️",                // Lives left, default 3
+    _asteroidTimer: null,           // Interval timer for asteroidGenerator
     // Function to generate asteroid eveny 3 seconds when game state is "PLAY"
     asteroidGenerator(){
+        if(this._asteroidTimer) clearInterval(this._asteroidTimer);
         if(this.gameState === "PLAY"){
-            let timer = setInterval(() => {
+            this._asteroidTimer = setInterval(() => {
                 if(this.gameState === "PLAY"){
                     asteroidHandler.generateAsteroid();
                 } else {
-                    clearInterval(timer);
+                    if(this._asteroidTimer) clearInterval(this._asteroidTimer);
+                    this._asteroidTimer = null;
                 }
             }, 3000);
         }
@@ -27,7 +30,6 @@ const gameHandler: GameHandler = {
     // Decrement lives and reflect in the proper DOM element
     decrementLives(){
         this.lives = this.lives.slice(0,this.lives.length-2);
-        console.log(this.lives);
         domElements.lifeElement.innerText = this.lives;
         if(this.lives === ""){
             this.gameState = "OVER";

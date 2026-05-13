@@ -13,6 +13,7 @@ function addInputEvents(){
             gameHandler.gameScore = 0;
             gameHandler.lives = "❤️❤️❤️";
             domElements.scoreElement.innerText = "0";
+            domElements.lifeElement.innerText = gameHandler.lives;
             domElements.gameEndScreen.style.display = "none";
             gameHandler.asteroidGenerator();
         } else if (gameHandler.gameState === "PAUSE") {     // If game is paused, resume it on keypress

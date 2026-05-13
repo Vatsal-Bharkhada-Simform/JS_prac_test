@@ -76,6 +76,7 @@ const asteroidHandler: AsteroidHandler = {
             gameHandler.decrementLives();
         }
         this.asteroids.get(name)?.remove();
+        this.asteroids.delete(name);
         const temp = this.asteroidNames[this.selectedAsteroidIndex];
         this.asteroidNames = this.asteroidNames.filter(asteroid => asteroid !== name);
         this.selectedAsteroidIndex = this.asteroidNames.findIndex(name => name === temp);

@@ -12,7 +12,10 @@ const asteroidHandler: AsteroidHandler = {
     selectedAsteroidIndex: -1,      // Index of selected asteroid in the map
     // Function to select a name from set of names and generate asteroid from it
     generateAsteroid(): void {
+        if (this.asteroidNames.length >= nameSet.length) return;
+        
         let index = Math.floor(Math.random() * nameSet.length);
+        
         while(this.asteroidNames.includes(nameSet[index] ?? "")){
             index = Math.floor(Math.random() * nameSet.length);
         }
@@ -45,7 +48,7 @@ const asteroidHandler: AsteroidHandler = {
 
         asteroid.classList.add("selected");
 
-        // If whole name of seclected asteroid is properly inserted, destroy that asteroid
+        // If whole name of selected asteroid is properly inserted, destroy that asteroid
         if(this.selectedAsteroid === ""){
             gameHandler.incrementScore();
             this.asteroids.delete(this.asteroidNames[this.selectedAsteroidIndex] ?? "");
@@ -65,12 +68,14 @@ const asteroidHandler: AsteroidHandler = {
     },
     // Handle removal of asteroid when it collides with the rocket
     handleAsteroidImpact(name){
+        if ((this.selectedAsteroid !== "" && this.selectedAsteroid.startsWith(name)) || this.asteroidNames[this.selectedAsteroidIndex] === name) {
+            this.selectedAsteroid = "";
+            this.selectedAsteroidIndex = -1;
+        }
         if(this.asteroids.has(name)){
-            console.log(this.asteroids.get(name));
             gameHandler.decrementLives();
         }
         this.asteroids.get(name)?.remove();
-        console.log(this.asteroids.delete(name));
         this.asteroidNames = this.asteroidNames.filter(asteroid => asteroid !== name);
     },
     // Clear all asteroids. To be used when game ends

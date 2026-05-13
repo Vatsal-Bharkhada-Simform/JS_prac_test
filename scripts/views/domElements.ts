@@ -1,12 +1,14 @@
+import { elementSelector } from "../utils/elementSelector.js";
+
 const domElements = {
-    scoreElement: document.querySelector(".destroy-count") as HTMLElement,
-    lifeElement: document.querySelector(".life-count") as HTMLElement,
-    asteroidArea: document.querySelector(".asteroid-area") as HTMLElement,
-    dangerZone: document.querySelector(".danger-zone") as HTMLElement,
-    rocket: document.querySelector(".rocket") as HTMLElement,
-    startScreen: document.querySelector(".start-screen") as HTMLElement,
-    gameEndScreen: document.querySelector(".game-over-screen") as HTMLElement,
-    pauseButton: document.querySelector(".pause-btn") as HTMLElement
+    scoreElement: elementSelector(".destroy-count"),
+    lifeElement: elementSelector(".life-count"),
+    asteroidArea: elementSelector(".asteroid-area"),
+    dangerZone: elementSelector(".danger-zone"),
+    rocket: elementSelector(".rocket"),
+    startScreen: elementSelector(".start-screen"),
+    gameEndScreen: elementSelector(".game-over-screen"),
+    pauseButton: elementSelector(".pause-btn")
 };
 
 export { domElements }; 

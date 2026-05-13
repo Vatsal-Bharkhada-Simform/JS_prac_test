@@ -68,7 +68,7 @@ const asteroidHandler: AsteroidHandler = {
     },
     // Handle removal of asteroid when it collides with the rocket
     handleAsteroidImpact(name){
-        if ((this.selectedAsteroid !== "" && this.selectedAsteroid.startsWith(name)) || this.asteroidNames[this.selectedAsteroidIndex] === name) {
+        if (this.asteroidNames[this.selectedAsteroidIndex] === name) {
             this.selectedAsteroid = "";
             this.selectedAsteroidIndex = -1;
         }
@@ -76,7 +76,9 @@ const asteroidHandler: AsteroidHandler = {
             gameHandler.decrementLives();
         }
         this.asteroids.get(name)?.remove();
+        let temp = this.asteroidNames[this.selectedAsteroidIndex];
         this.asteroidNames = this.asteroidNames.filter(asteroid => asteroid !== name);
+        this.selectedAsteroidIndex = this.asteroidNames.findIndex(name => name === temp);
     },
     // Clear all asteroids. To be used when game ends
     clearAllAsteroids(){

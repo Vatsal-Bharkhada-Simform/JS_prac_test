@@ -4,11 +4,11 @@ import { domElements } from "./domElements.js";
 // Generate asteroid element and set the name 
 // Add moving animation to the asteroid 
 function generateAsteroidElement(name: string): HTMLElement{
-    let wrapper = document.createElement("div");
-    let span = document.createElement("span");
-    let innerWrapper = document.createElement("div");
-    let img = document.createElement("img");
-    let crosshair = document.createElement("img");
+    const wrapper = document.createElement("div");
+    const span = document.createElement("span");
+    const innerWrapper = document.createElement("div");
+    const img = document.createElement("img");
+    const crosshair = document.createElement("img");
     
     wrapper.classList.add("asteroid");
 
@@ -17,7 +17,7 @@ function generateAsteroidElement(name: string): HTMLElement{
     img.src = "./assets/images/compressed.png";
     img.alt = "Asteroid image";
     crosshair.src = "./assets/images/crosshair.png";
-    crosshair.alt = "Asteroid image";
+    crosshair.alt = "Crosshair";
 
     crosshair.classList.add("crosshair");
 
@@ -27,7 +27,7 @@ function generateAsteroidElement(name: string): HTMLElement{
     wrapper.append(span);
     wrapper.append(innerWrapper);
 
-    let animation = generateAnimation(wrapper);
+    const animation = generateAnimation(wrapper);
 
     // Handle asteroid imapact if asteroid is not destroyed
     // This event will not execute for destroyed/removed asteroid elements
@@ -40,12 +40,12 @@ function generateAsteroidElement(name: string): HTMLElement{
 
 // Generate random initial coordinates to create asteroid movement animation
 function generateAnimation(wrapper: HTMLElement): Animation{
-    let initialX = Math.floor(Math.random() * window.innerWidth);
-    let initialY = -100;
+    const initialX = Math.floor(Math.random() * window.innerWidth);
+    const initialY = -100;
     
-    let dangerZoneRect = domElements.dangerZone.getBoundingClientRect();
-    let finalX = Math.floor(dangerZoneRect.width/2);
-    let finalY = dangerZoneRect.top;
+    const dangerZoneRect = domElements.dangerZone.getBoundingClientRect();
+    const finalX = Math.floor(dangerZoneRect.width/2);
+    const finalY = dangerZoneRect.top;
 
     const keyFrames: Keyframe[] = [
         {
@@ -62,7 +62,7 @@ function generateAnimation(wrapper: HTMLElement): Animation{
         duration: 10000,
     }
 
-    let animation = wrapper.animate(keyFrames, animationTiming);    // Use the animate webAPI to add animation using JavaScript
+    const animation = wrapper.animate(keyFrames, animationTiming);    // Use the animate webAPI to add animation using JavaScript
     return animation;
 }
 

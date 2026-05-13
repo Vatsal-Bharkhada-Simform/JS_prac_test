@@ -1,4 +1,5 @@
 import type { GameHandler } from "../types";
+import { elementSelector } from "../utils/elementSelector.js";
 import { pauseAnimation, playAnimation } from "../utils/handleAnimation.js";
 import { domElements } from "../views/domElements.js";
 import { asteroidHandler } from "./asteroidHandler.js";
@@ -40,7 +41,7 @@ const gameHandler: GameHandler = {
     // Function to show game over banner and 
     showGameOverBanner() {
         domElements.gameEndScreen.style.display = "flex";
-        let scoreDisplayElement = domElements.gameEndScreen.querySelector(".score") as HTMLElement;
+        const scoreDisplayElement = elementSelector(".score");
         if(scoreDisplayElement){
             scoreDisplayElement.innerText = `You destroyed ${this.gameScore} ${this.gameScore < 2 ? "asteroid" : "asteroids"}`
         }
@@ -50,7 +51,7 @@ const gameHandler: GameHandler = {
         asteroidHandler.asteroids.forEach(asteroid => {
             pauseAnimation(asteroid);
         });
-        let textElement = domElements.startScreen.querySelector(".text") as HTMLElement;
+        const textElement = domElements.startScreen.querySelector(".text") as HTMLElement;
         textElement.innerText = "Press any key to continue";
         domElements.startScreen.style.display = "flex";
         this.gameState = "PAUSE";

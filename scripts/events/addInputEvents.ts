@@ -21,7 +21,7 @@ function addInputEvents(){
             gameHandler.asteroidGenerator();
         } else {                                            // Else check the key match on any asteroid
             let input = e.key;
-            let isAlphabet = /[a-zA-Z]/.test(input);
+            const isAlphabet = /[a-zA-Z]/.test(input);
             
             if(input.length > 1 || !isAlphabet) return;
             

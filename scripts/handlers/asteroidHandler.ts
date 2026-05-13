@@ -19,9 +19,9 @@ const asteroidHandler: AsteroidHandler = {
         while(this.asteroidNames.includes(nameSet[index] ?? "")){
             index = Math.floor(Math.random() * nameSet.length);
         }
-        let selectedName = nameSet[index] || "";
+        const selectedName = nameSet[index] || "";
 
-        let asteroidElement = generateAsteroidElement(selectedName);
+        const asteroidElement = generateAsteroidElement(selectedName);
 
         domElements.asteroidArea.append(asteroidElement);
         this.asteroidNames.push(selectedName);
@@ -30,7 +30,7 @@ const asteroidHandler: AsteroidHandler = {
     // Check if the input matches an asteroid name and select that asteroid 
     handleInput(input){
         if(this.selectedAsteroid === "") {
-            let index = this.asteroidNames.findIndex(word => word.startsWith(input));
+            const index = this.asteroidNames.findIndex(word => word.startsWith(input));
             
             if(index === -1 || !this.asteroidNames[index]) return;
 
@@ -40,9 +40,9 @@ const asteroidHandler: AsteroidHandler = {
         
         if(this.selectedAsteroid[0] !== input) return;
         
-        let updatedWord = this.selectedAsteroid.slice(1);
+        const updatedWord = this.selectedAsteroid.slice(1);
         this.selectedAsteroid = updatedWord;
-        let asteroid = this.asteroids.get(this.asteroidNames[this.selectedAsteroidIndex] ?? "");
+        const asteroid = this.asteroids.get(this.asteroidNames[this.selectedAsteroidIndex] ?? "");
 
         if(!asteroid) return;
 
@@ -60,7 +60,7 @@ const asteroidHandler: AsteroidHandler = {
             return;
         }
         
-        let nameElement = asteroid?.firstElementChild as HTMLElement; //Assertion is valid as asteroid elements will always have HTML element child.
+        const nameElement = asteroid?.firstElementChild as HTMLElement; //Assertion is valid as asteroid elements will always have HTML element child.
 
         if(nameElement){
             nameElement.innerText = updatedWord;
@@ -76,7 +76,7 @@ const asteroidHandler: AsteroidHandler = {
             gameHandler.decrementLives();
         }
         this.asteroids.get(name)?.remove();
-        let temp = this.asteroidNames[this.selectedAsteroidIndex];
+        const temp = this.asteroidNames[this.selectedAsteroidIndex];
         this.asteroidNames = this.asteroidNames.filter(asteroid => asteroid !== name);
         this.selectedAsteroidIndex = this.asteroidNames.findIndex(name => name === temp);
     },

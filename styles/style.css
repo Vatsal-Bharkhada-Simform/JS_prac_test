@@ -21,6 +21,12 @@ body{
     font-family: "SpaceNova", Arial, Helvetica, sans-serif;
     font-weight: 300;
     color: #3c8aff;
+    /* ba */
+    background: url("../assets/images/starsbg.webp");
+    background-repeat: repeat;
+    background-size: 20vw;
+    background-position: 0% 0vw;
+    animation: 5s linear infinite moveBackground;
 }
 
 .start-screen, .game-over-screen{
@@ -149,6 +155,15 @@ main{
 
     span::first-letter {
         color: #ff814f;
+    }
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 0vw;
+    }
+    100% {
+        background-position: 0% 20vw;
     }
 }
 

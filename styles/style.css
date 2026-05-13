@@ -93,7 +93,6 @@ main{
 
     .danger-zone {
         flex: 1;
-        border-top: 2px dashed #9292927a;
         display: flex;
         justify-content: center;
         
@@ -111,11 +110,16 @@ main{
     position: fixed;
     display: flex;
     align-items: center;
+    transform: translate(-50%, -50%);
 
     span {
         font-size: 2rem;
         letter-spacing: 5px;
         color: #ddd;
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        transform: translateY(-50%);
     }
 
     div {
@@ -139,22 +143,12 @@ main{
 }
 
 .selected {
-    animation: 1.5s infinite highlight;
-
     div .crosshair {
         display: inline-block;
     }
-}
 
-@keyframes highlight{
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: .8;
-    }
-    100% {
-        opacity: 1;
+    span::first-letter {
+        color: #ff814f;
     }
 }
 

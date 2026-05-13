@@ -43,8 +43,9 @@ function generateAnimation(wrapper: HTMLElement): Animation{
     let initialX = Math.floor(Math.random() * window.innerWidth);
     let initialY = -100;
     
-    let finalX = domElements.rocket.offsetLeft;
-    let finalY = domElements.dangerZone.offsetTop - wrapper.getBoundingClientRect().height*2;
+    let dangerZoneRect = domElements.dangerZone.getBoundingClientRect();
+    let finalX = Math.floor(dangerZoneRect.width/2);
+    let finalY = dangerZoneRect.top;
 
     const keyFrames: Keyframe[] = [
         {
@@ -58,7 +59,7 @@ function generateAnimation(wrapper: HTMLElement): Animation{
     ];
 
     const animationTiming: KeyframeAnimationOptions = {
-        duration: 10000
+        duration: 10000,
     }
 
     let animation = wrapper.animate(keyFrames, animationTiming);    // Use the animate webAPI to add animation using JavaScript
